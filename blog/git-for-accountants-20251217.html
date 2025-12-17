@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Git for Accountants</title>
+  <meta name="description" content="How rebase and merge compare for teams who think like accountants — reconciling history vs preserving context.">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<main>
+<h1>Git for Accountants</h1>
+<p>People often say that rebasing rewrites history, and for teams with an accounting mindset that immediately sounds dangerous. Accounting records are sacred; you don’t go back and edit the ledger. End of discussion.</p>
+<p>The problem is that this analogy is applied at the wrong level.</p>
+<p>Feature branches are not accounting records. They are <strong>working papers</strong>.</p>
+<p>Once you look at Git through that lens, rebasing stops looking reckless and starts looking like basic record hygiene.</p>
+<hr />
+<h2>The Setup: We Are Accountants</h2>
+<p>Imagine we are a team of private‑equity accountants. Our job is to structure complex transactions that move money across jurisdictions — Cyprus, Panama, the UK, the Bahamas, the US. (All examples are fictional.) If you want a real‑world flavor of how complex this can get, feel free to play with this tool: <a href="https://treatyhopper.com">TreatyHopper</a></p>
+<p>Designing these transactions (and deals) is non‑trivial. We experiment with routes, intermediate accounts, and structures to minimize tax impact and risk. This work happens <strong>before</strong> anything is officially posted.</p>
+<p>While working on a deal, we never throw paper away. Every idea goes into a tray. If an approach doesn’t work, we don’t erase it — we add a new sheet explaining why we changed course. Over time, every deal looks like a thick stack of paper that captures the entire thought process.</p>
+<p>Now map that to Git:</p>
+<ul>
+<li><strong>Main branch</strong> → the posted, authoritative general ledger</li>
+<li><strong>Feature branches</strong> → working papers used to structure transactions</li>
+<li><strong>Commits on feature branches</strong> → drafts, calculations, intermediate ideas</li>
+</ul>
+<p>The key rule of accounting still holds:</p>
+<blockquote>
+<p>Once something is posted to the general ledger, it is never rewritten.</p>
+</blockquote>
+<p>The real decision we must make is organizational:</p>
+<blockquote>
+<p>Which papers belong in the official ledger, and which remain as working papers?</p>
+</blockquote>
+<hr />
+<h2>Meet Our Office Assistant: Git</h2>
+<p>Enter our office assistant. Her name is Git.</p>
+<p>She is extremely fast and very experienced. She has worked at startups and at large, highly regulated organizations. One of her defining traits is that she is very literal: she will do <em>exactly</em> what you ask her to do.</p>
+<p>If you tell her to pour gasoline on the general ledger and burn it, she will make you confirm the command — but she will almost never refuse.</p>
+<p>Git is very flexible and can live with a lot of mess. In practice, though, the industry has converged on two main ways of organizing the office:</p>
+<ul>
+<li><strong>Rebase</strong> with squash (further I'll simply call it rebase)</li>
+<li><strong>Merge</strong></li>
+</ul>
+<hr />
+<h2>Office That Uses Rebase: The Beautiful Thick Ledger</h2>
+<p>In a rebase‑based office, Git organizes everything around a <strong>single, authoritative ledger</strong>.</p>
+<ul>
+<li>There is one main desk with a big, thick general ledger on top</li>
+<li>Each accountant or small team has their own desk where they work on deals</li>
+<li>Working papers stay on their desks (feature branches) until the deal is finalized</li>
+</ul>
+<p>When a deal is ready:</p>
+<ul>
+<li>Git takes the finalized transaction sheets</li>
+<li>She appends them to the <em>end</em> of the current ledger</li>
+<li>The ledger remains strictly chronological</li>
+</ul>
+<p>The room looks almost like a classroom: one teacher’s desk with the official ledger, and many smaller desks where work happens in parallel.</p>
+
+<hr />
+<h2>Office That Uses Merge: Registry and File Cabinets</h2>
+<p>In a merge‑based office, the layout is different.</p>
+<p>Git keeps:</p>
+<ul>
+<li>A <strong>small registry</strong> on the main desk</li>
+<li>A <strong>large set of file cabinets</strong>, full of folders</li>
+</ul>
+<p>Each folder represents a branch and contains <em>everything</em>:</p>
+<ul>
+<li>Drafts</li>
+<li>Detours</li>
+<li>Abandoned ideas</li>
+<li>Back‑and‑forth discussions</li>
+</ul>
+<p>When a deal is finished:</p>
+<ul>
+<li>The folder is stored in the cabinet</li>
+<li>A note is added to the registry saying that this folder was reconciled with the ledger</li>
+</ul>
+<p>Git keeps track of everything — and she means <em>everything</em>.</p>
+<p>For the accountants, day‑to‑day work feels similar in both setups: take a copy of the ledger, design the deal, and give Git the result. The difference is how the result is <strong>filed</strong>.</p>
+<hr />
+<h2>The Problem: Reconciliation</h2>
+<p>Eventually, a problem appears.</p>
+<p>The chief accountant finds a discrepancy and wants to reconcile the last ten additions. What matters most is <strong>when</strong> the discrepancy was introduced.</p>
+<hr />
+<h3>Reconciliation with a Thick Ledger (Rebase)</h3>
+<p>A chronologically ordered ledger is a huge advantage.</p>
+<ul>
+<li>Find the most recent known‑good state</li>
+<li>Check halfway toward the end of the book</li>
+<li>If the numbers don’t match, repeat the process halfway again</li>
+</ul>
+<p>This quickly narrows the search to the exact transaction that introduced the discrepancy.</p>
+<p>Git has a name for this process: <strong>bisect</strong>.</p>
+<hr />
+<h3>Reconciliation with a Registry and File Cabinets (Merge)</h3>
+<p>Git can apply the same strategy, but the work is different.</p>
+<p>Instead of walking backward through a single book, she must:</p>
+<ul>
+<li>Consult the registry</li>
+<li>Pull a folder from the cabinet</li>
+<li>Ask you whether the state is correct</li>
+<li>Put the folder back and pull another</li>
+</ul>
+<p>Eventually, she will present you with a folder that contains the problem.</p>
+<hr />
+<h2>The Crucial Difference</h2>
+<p>Here is the key trade‑off:</p>
+<ul>
+<li><strong>With rebase</strong>, you learn <em>exactly when</em> the discrepancy was introduced</li>
+<li><strong>With merge</strong>, you learn <em>everything</em> about how the deal evolved</li>
+</ul>
+<p>Rebase optimizes for understanding the <strong>outcome</strong>.</p>
+<p>Merge optimizes for preserving the <strong>entire journey</strong> — memos, false starts, discussions, and abandoned ideas.</p>
+<p>Neither approach is wrong. They answer different questions.</p>
+<hr />
+<h2>Fast Forward Back</h2>
+<p>When deciding how to organize your office, choose deliberately.</p>
+<ul>
+<li>With a small team and few parallel deals, a merge‑based setup may naturally resemble a chronological ledger</li>
+<li>With many teams and many concurrent deals, the registry and file cabinets can grow very complex</li>
+</ul>
+<p>Both approaches serve a purpose:</p>
+<ul>
+<li><strong>Rebase (often with squash)</strong> produces a clean, chronological ledger that is easy to audit and reconcile</li>
+<li><strong>Always‑merge</strong> produces a rich archive that preserves every detail of how decisions were made</li>
+</ul>
+<p>The right choice depends on what you value more:</p>
+<ul>
+<li>Fast, reliable reconciliation</li>
+<li>Or deep historical context</li>
+</ul>
+<p>Choose the structure you want to reason about later.</p>
+</main>
+</body>
+</html>

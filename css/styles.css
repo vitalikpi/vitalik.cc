@@ -1,0 +1,44 @@
+/* Styles extracted from index.html */
+body {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    color: #444;
+    padding: 0 10px;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+figure {
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+    max-width: 220px;
+    margin: auto;
+}
+
+figcaption {
+    background-color: #222222;
+    color: white;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
