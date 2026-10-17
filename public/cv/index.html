@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Vitalii Pianykh - CV</title>
+        <link rel="stylesheet" href="../css/styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Vitalii Pianykh</h1>
+            <p><a href="mailto:work@vitalik.cc">work@vitalik.cc</a> | USA | <a href="linkedin.com/in/vpianykh">linkedin.com/in/vpianykh</p></a>
+            <p>Senior Backend Engineer | Distributed Systems | Ex-Indeed · Ex-Wayfair | AWS · Java · C#</p>
+        </header>
+
+        <p>
+            Senior backend engineer with 10+ years building distributed systems at scale — including owning Indeed's SMB subscription provisioning service and ML infrastructure work at Wayfair. Specializes in scalable APIs, event-driven architecture, and SQL/NoSQL data modeling, with a track record of owning systems end-to-end from architecture through production reliability.
+        </p>
+
+        <h2>Work Experience</h2>
+
+        <h3>TCP Software · Senior Software Engineer</h3>
+        <p>May 2024 – Present</p>
+        <p>TCP Software (Providence Equity Partners portfolio company) — time-tracking and workforce management for hundreds of thousands of shift-based and frontline employees</p>
+        <p>Designed and implemented TCP's unified Single Sign-On portal — OIDC on AWS Cognito, single-table DynamoDB schema with DAX caching, API design, and Terraform infrastructure (ECS, Redis). Lets four products (Aladtec, Humanity, TimeClock, mobile app) offload identity and data security to a shared platform, serving ~1,000 client companies at 99.99% auth success.</p>
+        <p>Inherited a stalled data-integration pipeline spanning ~100 SQL Server instances and 1,000 single-tenant databases; built a decoupled, release-train deployment pipeline to free it from the core product's slower release cycle, then grew the team and transitioned ownership to a dedicated engineer.</p>
+        <p>Designed and built a greenfield DynamoDB-based progress-tracking system for bulk client onboarding, engineered to avoid adding latency to the live real-time sync pipeline it shares.</p>
+        <p>Built an automated PowerShell-based machine-setup tool, cutting new developer setup time from ~1 week to ~1 hour (40x).</p>
+
+        <h3>Indeed.com · Senior Software Engineer</h3>
+        <p>Aug 2022 – May 2024</p>
+        <p>Owned Indeed's SMB subscription provisioning microservice (tens of thousands of business accounts); led its migration from gRPC to GraphQL as part of a company-wide API strategy shift without disrupting production traffic.</p>
+        <p>Migrated 15 Java projects from Java 8 to 20; identified the same upgrade need across ~1,000 projects company-wide and built an automated dependency-graph migration script, contributed to Indeed's broader modernization initiative.</p>
+
+        <h3>Wayfair · Machine Learning Engineer</h3>
+        <p>Feb 2022 – Jul 2022</p>
+        <p>Owned a microservice serving a production ML model at ~10K requests/second peak load, primarily consumed by internal batch systems.</p>
+        <p>Designed and implemented a DAG-pipeline observability framework using the VALET methodology on Wayfair's existing DataDog infrastructure, collaborating with the product team to define key pipeline metrics; adopted by the team.</p>
+        <p>Took over a stalled effort to scale an Airflow/Spark ML pipeline into new international markets (UK, EU); resolved deep infrastructure issues (OOM failures, Spark cluster instability) and validated it through successful staging runs before the initiative was deprioritized company-wide.</p>
+        <p>Gathered requirements and authored the design for a multi-model product tag inference pipeline, implementing an initial code draft before transitioning to a different initiative.</p>
+
+        <h3>GlobalLogic · Senior Software Engineer / Technical Lead (client consulting)</h3>
+        <p>Dec 2013 – Oct 2021</p>
+        <p>Microsoft — On a 5-engineer team, decoupled Dynamics CRM from its SQL Server dependency onto a NoSQL data store, continuously integrating against a 1,600-engineer org shipping in parallel branches; resolved a critical blocking bug via a 3-week binary-search investigation across 8-16 hour build cycles.</p>
+        <p>Space Labs — Built a Docker Swarm-based Cassandra cluster for a greenfield patient-telemetry platform (on-prem and cloud); later served as onsite point of contact for a 30-person distributed team during a technology stack upgrade.</p>
+        <p>Siemens — Devised an original field-repair approach for faulty ultrasound probes, avoiding ~$20M in return/replacement costs, across a stack spanning touch-panel UI to low-level software bugs.</p>
+        <p>Additional engagements: MGM (payment-processing microservices), pacemaker-testing equipment configuration portal (led 5-person team), Carlyle Group fund-accounting modernization, Barclays Capital Fixed Income distributed risk calculation engine.</p>
+
+        <h2>Technical Skills</h2>
+        <p>Languages: C#, Java, Python, C/C++, Swift, JavaScript/TypeScript</p>
+        <p>Infra: AWS, Docker, Kubernetes, Docker Swarm, Terraform</p>
+        <p>Databases: DynamoDB, MS SQL, Postgres, MariaDB, SQLite, Cassandra, BigQuery</p>
+        <p>ML: PyTorch, Pandas, NumPy, PySpark, DataProc</p>
+
+        <h2>Education</h2>
+        <p>B.S., Applied Mathematics — East Ukrainian National University</p>
+
+        <footer>
+            <p>DISCLOSURE: I used LLM to produce this CV.</p>
+        </footer>
+    </body>
+</html>
